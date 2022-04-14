@@ -1,1 +1,0 @@
-docker build . -t kevinpan45/java17-maven:latest

@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build -f $GITHUB_ACTION_PATH/java-17-maven/Dockerfile --tag kevinpan45/java17-maven:latest
+      run: docker build . --tag kevinpan45/java17-maven:latest
     - name: Push to Docker Hub
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
