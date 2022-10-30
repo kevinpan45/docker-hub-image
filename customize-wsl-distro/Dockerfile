@@ -1,9 +1,9 @@
 FROM ubuntu:20.04
-RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak
-ADD sources.list /etc/apt/
 RUN apt-get -q update \
-    && apt-get install -y -qq bc binutils libgomp1 perl psmisc sudo tar tcsh uuid-dev vim-common libjpeg62-dev libgl-dev wget
-COPY freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz /tmp
-RUN tar -C /usr/local -xzf /tmp/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz \
-    && chmod a+x -R /usr/local/freesurfer \
-    && rm /tmp/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+    && apt-get install -y -qq vim wget zip unzip git curl
+# Install Sdkman & Gradle 7 & Java 17 & Maven
+RUN curl -s "https://get.sdkman.io" | bash \
+    && bash -c "source $HOME/.sdkman/bin/sdkman-init.sh \
+    && sdk install gradle 7.5 \
+    && sdk install java 17.0.0-ms \
+    && sdk install maven 3.8.6"
