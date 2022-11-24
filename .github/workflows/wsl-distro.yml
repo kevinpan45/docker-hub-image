@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build Customize WSL Distro
 
 on:
   workflow_dispatch
