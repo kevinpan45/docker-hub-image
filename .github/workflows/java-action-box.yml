@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build Java Action Box
 
 on:
   workflow_dispatch
