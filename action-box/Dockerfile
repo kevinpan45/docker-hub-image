@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 USER root
 
-COPY sources.list /etc/apt/sources.list
+# COPY sources.list /etc/apt/sources.list
 
 ARG GRADLE_VERSION=7.4.2
 ARG MAVEN_VERSION=3.8.6
