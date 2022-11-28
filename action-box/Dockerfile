@@ -9,8 +9,8 @@ ARG MAVEN_VERSION=3.8.6
 ARG JDK_VERSION=17.0.5-ms
 
 ENV PATH=/root/.sdkman/candidates/java/current/bin:$PATH
-ENV PATH=/root/.sdkman/candidates/scala/current/bin:$PATH
-ENV PATH=/root/.sdkman/candidates/sbt/current/bin:$PATH
+ENV PATH=/root/.sdkman/candidates/maven/current/bin:$PATH
+ENV PATH=/root/.sdkman/candidates/gradle/current/bin:$PATH
 
 # Install packages
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
