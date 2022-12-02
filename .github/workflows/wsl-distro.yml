@@ -1,7 +1,12 @@
 name: Build Customize WSL Distro
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      version: 
+        description: 'Release version publish to GitHub Packages'
+        required: true
+        default: 'latest'
 
 jobs:
 
@@ -11,12 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build Customize WSL Distro
-      working-directory: ./customize-wsl-distro
-      run: docker build . --tag kevinpan45/ubuntu2004-wsl:latest
     - name: Push to Docker Hub
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: kevinpan45/ubuntu2004-wsl:latest
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        dockerfile: ./customize-wsl-distro/Dockerfile
