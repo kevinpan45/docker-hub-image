@@ -31,3 +31,20 @@ RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \
 # Install OpenAPI Generator
 RUN npm install @openapitools/openapi-generator-cli -g && \
     openapi-generator-cli version-manager set 6.2.0
+
+# Install AWS CLI
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install
+
+# Install Helm
+RUN curl https://baltocdn.com/helm/signing.asc | apt-key add - && \
+    apt-get install apt-transport-https --yes && \
+    echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list && \
+    apt-get update && \
+    apt-get install helm
+
+# Install Kubectl
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.22.4/bin/linux/amd64/kubectl && \
+    chmod +x ./kubectl && \
+    mv ./kubectl /usr/local/bin/kubectl
