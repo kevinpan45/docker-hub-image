@@ -4,7 +4,7 @@ USER root
 
 # COPY sources.list /etc/apt/sources.list
 
-ARG GRADLE_VERSION=7.4.2
+ARG GRADLE_VERSION=7.5.1
 ARG MAVEN_VERSION=3.8.6
 ARG JDK_VERSION=17.0.5-ms
 
