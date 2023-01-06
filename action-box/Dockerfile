@@ -35,3 +35,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \
 # Install OpenAPI Generator
 RUN npm install @openapitools/openapi-generator-cli -g && \
     openapi-generator-cli version-manager set 6.2.0
+
+# Install DBML CLI
+RUN npm install -g @dbml/cli
