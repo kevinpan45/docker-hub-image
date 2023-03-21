@@ -32,9 +32,15 @@ RUN curl -fsSL https://get.docker.com | bash -s docker
 RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \
     apt-get install -y nodejs
 
+# Set taobao registry
+RUN npm config set registry https://registry.npm.taobao.org
+
+# Install Yarn
+RUN npm install -g yarn
+
 # Install OpenAPI Generator
 RUN npm install @openapitools/openapi-generator-cli -g && \
-    openapi-generator-cli version-manager set 6.2.0
+    openapi-generator-cli version-manager set 6.4.0
 
 # Install AWS CLI
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
