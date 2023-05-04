@@ -1,0 +1,26 @@
+name: Build OpenNeuro Datalad
+
+on:
+  workflow_dispatch:
+    inputs:
+      version: 
+        description: 'Release version publish to GitHub Packages'
+        required: true
+        default: 'latest'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Push to Docker Hub
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: kevinpan45/openneuro-datalad:latest
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        dockerfile: ./openneuro-datalad/Dockerfile
