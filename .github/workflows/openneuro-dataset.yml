@@ -19,8 +19,8 @@ jobs:
     - name: Push to Docker Hub
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: kevinpan45/openneuro-datalad:latest
+        name: kevinpan45/openneuro-dataset:latest
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
-        dockerfile: ./openneuro-datalad/Dockerfile
+        dockerfile: ./openneuro-dataset/Dockerfile
