@@ -1,4 +1,4 @@
-name: Build OpenNeuro Datalad
+name: Build OpenNeuro Dataset
 
 on:
   workflow_dispatch:
