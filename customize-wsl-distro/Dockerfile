@@ -1,8 +1,8 @@
 FROM ubuntu:20.04
 
-ARG GRADLE_VERSION=7.4.2
-ARG MAVEN_VERSION=3.8.6
-ARG JDK_VERSION=17.0.5-ms
+ARG GRADLE_VERSION=8.2
+ARG MAVEN_VERSION=3.9.3
+ARG JDK_VERSION=17.0.7-ms
 
 ENV PATH=/root/.sdkman/candidates/java/current/bin:$PATH
 ENV PATH=/root/.sdkman/candidates/maven/current/bin:$PATH
