@@ -12,5 +12,8 @@ RUN apt-get install nomad
 
 WORKDIR /root
 
+# append cd ~ to bashrc
+RUN echo "cd ~" >> /root/.bashrc
+
 # Bash as entrypoint
-ENTRYPOINT ["cd", "~"]
+ENTRYPOINT ["/bin/bash"]
