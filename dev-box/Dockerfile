@@ -28,7 +28,7 @@ RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
 RUN curl -fsSL https://get.docker.com | bash -s docker
 
 # Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_21.x | -E bash - && \
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
     apt-get install -y nodejs
 
 # Install Yarn
