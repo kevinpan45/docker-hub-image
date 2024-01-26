@@ -2,9 +2,9 @@ FROM ubuntu:22.04
 
 USER root
 
-ARG GRADLE_VERSION=${{ env.GRADLE_VERSION }}
-ARG MAVEN_VERSION=${{ env.MAVEN_VERSION }}
-ARG JDK_VERSION=${{ env.JDK_VERSION }}
+ARG GRADLE_VERSION=8.5
+ARG MAVEN_VERSION=3.9.6
+ARG JDK_VERSION=21.0.2-ms
 
 ENV PATH=/root/.sdkman/candidates/java/current/bin:$PATH
 ENV PATH=/root/.sdkman/candidates/maven/current/bin:$PATH
