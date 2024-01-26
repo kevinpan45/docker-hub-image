@@ -1,1 +1,1 @@
-docker build --pull --rm -f "Dockerfile" -t kp45-ubuntu2004:0.0.1 "."
+docker build --pull --rm -f "Dockerfile" -t wsl-kp45-ubuntu:0.0.1 "."
