@@ -12,6 +12,10 @@ RUN apt-get install nomad
 
 WORKDIR /root
 
+# Install Starship
+RUN curl -fsSL https://starship.rs/install.sh | bash -s -- -y \
+    && echo 'eval "$(starship init bash)"' >> /root/.bashrc
+
 # append cd ~ to bashrc
 RUN echo "cd ~" >> /root/.bashrc
 
