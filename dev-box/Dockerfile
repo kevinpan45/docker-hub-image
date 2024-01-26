@@ -12,7 +12,7 @@ ENV PATH=/root/.sdkman/candidates/gradle/current/bin:$PATH
 
 # Install packages
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y -qq install mysql-client-core-8.0 wget net-tools zip unzip git vim iftop iotop curl redis-tools
+    && apt-get -y -qq install mysql-client-core-8.0 wget net-tools zip unzip git vim iftop iotop curl redis-tools lsb-core
 # Install SDKMAN
 RUN curl -s "https://get.sdkman.io" | bash 
 
@@ -36,7 +36,7 @@ RUN npm install -g yarn
 
 # Install OpenAPI Generator
 RUN npm install @openapitools/openapi-generator-cli -g && \
-    openapi-generator-cli version-manager set 6.4.0
+    openapi-generator-cli version-manager set 7.2.0
 
 # Install AWS CLI
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
