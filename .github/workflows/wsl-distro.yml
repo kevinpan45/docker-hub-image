@@ -19,7 +19,7 @@ jobs:
     - name: Push to Docker Hub
       uses: elgohr/Publish-Docker-Github-Action@v5
       with:
-        name: kevinpan45/ubuntu2004-wsl:latest
+        name: kevinpan45/wsl-kp45-ubuntu:latest
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
