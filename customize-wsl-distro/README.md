@@ -17,3 +17,8 @@ wsl --import <Distro> .wsl\<Distro> distro-to-import.tar
 ```bash
 wsl -d <Distro>
 ```
+6. Delete useless container
+```bash
+docker container rm wsl-to-import
+```
+7. Delete distro export tar package (Optional)
