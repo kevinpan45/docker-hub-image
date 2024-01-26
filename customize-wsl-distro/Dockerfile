@@ -10,5 +10,7 @@ RUN npm config set registry https://registry.npm.taobao.org
 # Install Nomad
 RUN apt-get install nomad
 
+WORKDIR /root
+
 # Bash as entrypoint
 ENTRYPOINT ["/bin/bash"]
