@@ -1,12 +1,10 @@
-FROM ubuntu:20.04
+FROM ubuntu:${UBUNTU_OS_TAG}
 
 USER root
 
-# COPY sources.list /etc/apt/sources.list
-
-ARG GRADLE_VERSION=7.4.2
-ARG MAVEN_VERSION=3.8.6
-ARG JDK_VERSION=17.0.5-ms
+ARG GRADLE_VERSION=${GRADLE_VERSION}
+ARG MAVEN_VERSION=${MAVEN_VERSION}
+ARG JDK_VERSION=${JDK_VERSION}
 
 ENV PATH=/root/.sdkman/candidates/java/current/bin:$PATH
 ENV PATH=/root/.sdkman/candidates/maven/current/bin:$PATH
@@ -25,15 +23,13 @@ RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
     yes | sdk install gradle ${GRADLE_VERSION} && \
     rm -rf $HOME/.sdkman/archives/* && \
     rm -rf $HOME/.sdkman/tmp/*"
+
 # Install Docker 
 RUN curl -fsSL https://get.docker.com | bash -s docker
 
-# Install Node.js 19x
-RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | -E bash - && \
     apt-get install -y nodejs
-
-# Set taobao registry
-RUN npm config set registry https://registry.npm.taobao.org
 
 # Install Yarn
 RUN npm install -g yarn
@@ -58,3 +54,12 @@ RUN curl https://baltocdn.com/helm/signing.asc | apt-key add - && \
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.22.4/bin/linux/amd64/kubectl && \
     chmod +x ./kubectl && \
     mv ./kubectl /usr/local/bin/kubectl
+
+# Install Vault & Nomad
+RUN apt-get install gpg coreutils && \
+    wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
+    gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint && \
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list && \
+    apt update && \
+    apt-get install vault
