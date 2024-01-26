@@ -1,10 +1,10 @@
-FROM ubuntu:${UBUNTU_OS_TAG}
+FROM ubuntu:22.04
 
 USER root
 
-ARG GRADLE_VERSION=${GRADLE_VERSION}
-ARG MAVEN_VERSION=${MAVEN_VERSION}
-ARG JDK_VERSION=${JDK_VERSION}
+ARG GRADLE_VERSION=${{ env.GRADLE_VERSION }}
+ARG MAVEN_VERSION=${{ env.MAVEN_VERSION }}
+ARG JDK_VERSION=${{ env.JDK_VERSION }}
 
 ENV PATH=/root/.sdkman/candidates/java/current/bin:$PATH
 ENV PATH=/root/.sdkman/candidates/maven/current/bin:$PATH
