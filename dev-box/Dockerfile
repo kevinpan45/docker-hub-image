@@ -55,7 +55,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.22.4/b
     chmod +x ./kubectl && \
     mv ./kubectl /usr/local/bin/kubectl
 
-# Install Vault & Nomad
+# Install Vault
 RUN apt-get install gpg coreutils && \
     wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
     gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint && \
