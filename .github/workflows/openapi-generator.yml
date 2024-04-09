@@ -1,0 +1,26 @@
+name: Build OpenAPI Generator Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      version: 
+        description: 'Release version publish to GitHub Packages'
+        required: true
+        default: 'latest'
+
+jobs:
+
+  build-python:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Push to Docker Hub
+      uses: elgohr/Publish-Docker-Github-Action@v5
+      with:
+        name: kevinpan45/openapi-generator-python:latest
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        dockerfile: ./openapi-generator/Dockerfile.python
