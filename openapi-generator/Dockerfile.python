@@ -8,6 +8,10 @@ ENV PATH=/root/.sdkman/candidates/java/current/bin:$PATH
 ENV PATH=/root/.sdkman/candidates/maven/current/bin:$PATH
 ENV PATH=/root/.sdkman/candidates/gradle/current/bin:$PATH
 
+# Install packages
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y -qq install wget net-tools zip unzip vim curl
+
 # Install SDKMAN
 RUN curl -s "https://get.sdkman.io" | bash 
 
