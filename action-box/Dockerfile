@@ -1,12 +1,12 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 USER root
 
 # COPY sources.list /etc/apt/sources.list
 
-ARG GRADLE_VERSION=7.5.1
-ARG MAVEN_VERSION=3.8.6
-ARG JDK_VERSION=17.0.5-ms
+ARG GRADLE_VERSION=8.5
+ARG MAVEN_VERSION=3.9.6
+ARG JDK_VERSION=21.0.2-ms
 
 ENV PATH=/root/.sdkman/candidates/java/current/bin:$PATH
 ENV PATH=/root/.sdkman/candidates/maven/current/bin:$PATH
@@ -29,12 +29,9 @@ RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
 RUN curl -fsSL https://get.docker.com | bash -s docker
 
 # Install Node.js 19x
-RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
     apt-get install -y nodejs
 
 # Install OpenAPI Generator
 RUN npm install @openapitools/openapi-generator-cli -g && \
-    openapi-generator-cli version-manager set 6.2.0
-
-# Install DBML CLI
-RUN npm install -g @dbml/cli
+    openapi-generator-cli version-manager set 7.4.0
