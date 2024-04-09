@@ -4,7 +4,9 @@ FROM ghcr.io/kevinpan45/action-box:latest
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
 
 # install python 3.9
-RUN apt update && \
-    apt install -y software-properties-common && \
-    add-apt-repository ppa:deadsnakes/ppa && \
-    apt-get install -y python3.9 python3.9-dev python3.9-distutils python3.9-venv python3-pip
+# RUN apt update && \
+#     apt install -y software-properties-common && \
+#     add-apt-repository ppa:deadsnakes/ppa && \
+#     apt-get install -y python3.9 python3.9-dev python3.9-distutils python3.9-venv python3-pip
+RUN curl https://pyenv.run | bash
+RUN pyenv install 3.9.12
