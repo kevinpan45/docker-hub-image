@@ -55,11 +55,13 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.22.4/b
     chmod +x ./kubectl && \
     mv ./kubectl /usr/local/bin/kubectl
 
-# Install Vault
+# Install HashiCorp Products
 RUN apt-get install gpg coreutils && \
     wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
     gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint && \
     curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list && \
     apt update && \
-    apt-get install vault
+    apt-get install vault && \
+    apt-get install nomad && \
+    apt-get install consul
